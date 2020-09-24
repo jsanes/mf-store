@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import data from './data';
 
 function ProductsList(props) {
+  function formatNumber(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  }
+
   function renderItems() {
     return data.map((item, index) => (
       <div className="item" key={`store-item-${index}`}>
@@ -12,7 +16,7 @@ function ProductsList(props) {
           <p>{item.description}</p>
           <strong>
             {item.price ? '$' : ''}
-            {item.price}
+            {formatNumber(item.price)}
           </strong>
         </Link>
         <button
