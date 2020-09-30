@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useImperativeHandle } from 'react';
 import { Link } from 'react-router-dom';
 import data from './data';
+import useExpose from './customHooks';
 
-function ProductDetail(props) {
+const ProductDetail = React.forwardRef((props, ref) => {
   const item = data.find((product) => product.name === props.match.params.name);
+
+  useExpose(ref);
 
   function formatNumber(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
@@ -25,6 +28,6 @@ function ProductDetail(props) {
       </button>
     </div>
   );
-}
+});
 
 export default ProductDetail;

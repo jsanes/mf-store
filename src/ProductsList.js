@@ -1,13 +1,10 @@
 import React, { useImperativeHandle } from 'react';
 import { Link } from 'react-router-dom';
 import data from './data';
+import useExpose from './customHooks';
 
 const ProductsList = React.forwardRef((props, ref) => {
-  useImperativeHandle(ref, () => ({
-    onItemRemoved: (item) => {
-      console.log(`The ${item} has been removed.`);
-    },
-  }));
+  useExpose(ref);
 
   function formatNumber(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
