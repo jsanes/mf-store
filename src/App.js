@@ -7,23 +7,23 @@ import './App.css';
 
 const defaultHistory = createBrowserHistory();
 
-function App({ history = defaultHistory, ...rest }) {
+const App = React.forwardRef(({ history = defaultHistory, ...rest }, ref) => {
   return (
     <BrowserRouter>
       <Switch>
         <Route
           exact
           path="/"
-          render={(props) => <ProductsList {...rest} {...props} />}
+          render={(props) => <ProductsList {...rest} {...props} ref={ref} />}
         />
         <Route
           exact
           path="/product/:name"
-          render={(props) => <ProductDetail {...rest} {...props} />}
+          render={(props) => <ProductDetail {...rest} {...props} ref={ref} />}
         />
       </Switch>
     </BrowserRouter>
   );
-}
+});
 
 export default App;

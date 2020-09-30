@@ -4,8 +4,11 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-window.renderStore = (containerId, props) => {
-  ReactDOM.render(<App {...props} />, document.getElementById(containerId));
+window.renderStore = (containerId, props, ref) => {
+  ReactDOM.render(
+    <App {...props} ref={ref} />,
+    document.getElementById(containerId)
+  );
   serviceWorker.unregister();
 };
 

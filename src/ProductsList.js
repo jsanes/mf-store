@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useImperativeHandle } from 'react';
 import { Link } from 'react-router-dom';
 import data from './data';
 
-function ProductsList(props) {
+const ProductsList = React.forwardRef((props, ref) => {
+  useImperativeHandle(ref, () => ({
+    onItemRemoved: (item) => {
+      console.log(`The ${item} has been removed.`);
+    },
+  }));
+
   function formatNumber(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
   }
@@ -36,6 +42,6 @@ function ProductsList(props) {
       <div className="list">{renderItems()}</div>
     </div>
   );
-}
+});
 
 export default ProductsList;
