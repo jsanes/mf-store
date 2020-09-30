@@ -21,7 +21,7 @@ function ProductsList(props) {
         </Link>
         <button
           onClick={() => {
-            props.addItem(item);
+            props.shoppingCartRef.current.addItem(item);
           }}
         >
           Add to Cart

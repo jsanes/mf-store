@@ -18,7 +18,7 @@ function ProductDetail(props) {
       <strong>${formatNumber(item.price)}</strong>
       <button
         onClick={() => {
-          props.addItem(item);
+          props.shoppingCartRef.current.addItem(item);
         }}
       >
         Add to Cart
