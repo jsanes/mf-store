@@ -1,4 +1,4 @@
-import React, { useImperativeHandle } from 'react';
+import { useImperativeHandle } from 'react';
 
 export default function useExpose(ref) {
   useImperativeHandle(ref, () => ({
